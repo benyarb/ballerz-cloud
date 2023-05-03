@@ -45,7 +45,10 @@ function extractVariant(url) {
   // and imageName ( here, "ballerz/7562")
   const parts = url.pathname.replace("/images/", "").split("/");
   const imageName = parts.splice(0, 2).join("/");
-  return { variant: parts.join("/"), imageName: imageName };
+  return {
+    variant: parts.join("/").replace(".png", "") || "public",
+    imageName: imageName,
+  };
 }
 
 function notFound() {
